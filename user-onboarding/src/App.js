@@ -4,6 +4,7 @@ import * as yup from 'yup';
 import './App.css';
 import Form from './Form'
 import AdvancedForm from './AdvancedForm'
+import schema from './validation/formSchema'
 
 const initialFormValues = {
   fname : '',
@@ -57,6 +58,25 @@ function App() {
     });
   }
 
+  const inputChange = (name, value) => {
+
+      yup
+      .reach(schema,name)
+      .validate(value)
+      .then(() => {
+        setFormErrors({
+          ...formErrors,[name]:''})
+      })
+      .catch((err) => {
+        setFormErrors({
+          ...formErrors,
+          [name]: err.errors[0],
+        });
+      });
+
+  }
+
+  
      
 
   
@@ -70,5 +90,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

@@ -17,9 +17,4 @@ password : yup
 
 terms : yup.boolean(),
 
-
-
-
-
-
 }) 
