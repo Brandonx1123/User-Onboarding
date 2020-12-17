@@ -29,7 +29,7 @@ function TeamMemberForm (props) {
          </div>
             <div className = 'form-groups'>
                 <label>
-                First Name
+                First Name:
                 <input
                 name='fname'
                 type= 'text'
@@ -41,7 +41,7 @@ function TeamMemberForm (props) {
                 </label>
 
                 <label>
-                Last Name
+                Last Name:
                 <input
                 name='lname'
                 type= 'text'
@@ -53,7 +53,7 @@ function TeamMemberForm (props) {
                 </label>
 
                 <label>
-                Email
+                Email:
                 <input
                 name='email'
                 type= 'email'
@@ -65,7 +65,7 @@ function TeamMemberForm (props) {
                 </label>
 
                 <label>
-                Password
+                Password:
                 <input
                 name='password'
                 type= 'text'
@@ -77,7 +77,7 @@ function TeamMemberForm (props) {
                 </label>
             
                 <label>
-                Terms of Service
+                Terms of Service:
                 <input
                 name='terms'
                 type= 'checkbox'

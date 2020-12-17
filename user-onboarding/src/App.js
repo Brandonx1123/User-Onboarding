@@ -73,8 +73,8 @@ function App() {
           [name]: err.errors[0],
         });
       });
-      setFormErrors({
-        ...formErrors,
+      setFormValues({
+        ...formValues,
         [name]: value,
       })
   }
@@ -108,7 +108,7 @@ useEffect(() => {
   
 
   return (
-    <div className="App">
+    <div className="App container">
       <header>
         Application to Brandons School
       </header>
@@ -118,7 +118,7 @@ useEffect(() => {
       change ={inputChange}
       submit ={formSubmit}
       disabled ={disabled}
-      error ={formErrors}
+      errors ={formErrors}
       />
       </div>
 
