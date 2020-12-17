@@ -18,7 +18,15 @@ function TeamMemberForm (props) {
     };
 
     return (
-        <form onSubmit={onSubmit}>
+        <form className= 'Form container' onSubmit={onSubmit}>
+
+         <div className="errors">
+          <div>{errors.fname}</div>
+          <div>{errors.lname}</div>
+          <div>{errors.email}</div>
+          <div>{errors.password}</div>
+          <div>{errors.terms}</div>
+         </div>
             <div className = 'form-groups'>
                 <label>
                 First Name
@@ -67,7 +75,7 @@ function TeamMemberForm (props) {
                 onChange= {onChange}
                 />
                 </label>
-
+            
                 <label>
                 Terms of Service
                 <input
@@ -79,7 +87,7 @@ function TeamMemberForm (props) {
                 </label>
 
                 <div className ='submit'>
-                <button>submit</button>
+                <button disabled={disabled}>submit</button>
                 </div>
             </div>
         </form>

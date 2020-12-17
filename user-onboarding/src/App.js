@@ -81,11 +81,13 @@ function App() {
 
   const formSubmit = () => {
     const newUser = {
-      fname : formValues.fname.trim(),
+    fname : formValues.fname.trim(),
     lname: formValues.lname.trim(),
     email: formValues.email.trim(),
     password:formValues.password.trim(),
-    terms:formValues.terms
+    "": ["terms"].filter(
+      (terms) => formValues[terms]
+    )
     }
     postNewUser(newUser);
   }
@@ -120,9 +122,9 @@ useEffect(() => {
       />
       </div>
 
-      {forms.map((person) => {
+      {/* {forms.map((person) => {
         return <Form key={person.id} details={person} />
-      })}
+      })} */}
     </div>
   );
 }
