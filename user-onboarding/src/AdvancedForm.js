@@ -21,13 +21,25 @@ function TeamMemberForm (props) {
         <form onSubmit={onSubmit}>
             <div className = 'form-groups'>
                 <label>
-                Username
+                First Name
                 <input
-                name='username'
+                name='fname'
                 type= 'text'
-                placeholder= 'type your username here'
+                placeholder= 'type your first name here'
                 maxLength = '35'
-                value= {values.username}
+                value= {values.fname}
+                onChange= {onChange}
+                />
+                </label>
+
+                <label>
+                Last Name
+                <input
+                name='lname'
+                type= 'text'
+                placeholder= 'type your last name here'
+                maxLength = '35'
+                value= {values.lname}
                 onChange= {onChange}
                 />
                 </label>
@@ -45,15 +57,25 @@ function TeamMemberForm (props) {
                 </label>
 
                 <label>
-                Role
-                <select name='role' value={values.role} onChange={onChange}>
-                 <option value=''>-----select role-----</option>
-                 <option value='instructor'>Instructor</option>
-                 <option value='student'>Student</option>
-                 <option value='frontend engineer'>Front End Engineer</option>
-                 <option value='backend engineer'>Back End Engineer</option>
-                 <option value='Professional Web Developer'>Web Developer</option>
-                </select>
+                Password
+                <input
+                name='password'
+                type= 'text'
+                placeholder= 'type password here'
+                maxLength = '35'
+                value= {values.password}
+                onChange= {onChange}
+                />
+                </label>
+
+                <label>
+                Terms of Service
+                <input
+                name='terms'
+                type= 'checkbox'
+                checked = {values.terms}
+                onChange= {onChange}
+                />
                 </label>
 
                 <div className ='submit'>

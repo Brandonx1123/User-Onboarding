@@ -73,11 +73,35 @@ function App() {
           [name]: err.errors[0],
         });
       });
-
+      setFormErrors({
+        ...formErrors,
+        [name]: value,
+      })
   }
 
-  
-     
+  const formSubmit = () => {
+    const newUser = {
+      fname : formValues.fname.trim(),
+    lname: formValues.lname.trim(),
+    email: formValues.email.trim(),
+    password:formValues.password.trim(),
+    terms:formValues.terms
+    }
+    postNewUser(newUser);
+  }
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+
+useEffect(() => {
+  schema.isValid(formValues).then((valid) => {
+    setDisabled(!valid)
+  })
+}, [formValues]);
+
+
 
   
 
@@ -86,7 +110,19 @@ function App() {
       <header>
         Application to Brandons School
       </header>
-      
+      <div>
+      <AdvancedForm 
+      values ={formValues}
+      change ={inputChange}
+      submit ={formSubmit}
+      disabled ={disabled}
+      error ={formErrors}
+      />
+      </div>
+
+      {forms.map((person) => {
+        return <Form key={person.id} details={person} />
+      })}
     </div>
   );
 }
