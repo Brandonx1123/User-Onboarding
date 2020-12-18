@@ -32,31 +32,20 @@ function App() {
   const [formErrors, setFormErrors] = useState(initialErrorValues);
   const [disabled, setDisabled] = useState(initialDisabled);
   
-  const getUsers = () => {
-    axios
-    .get('https://reqres.in/api/users' )
-    .then((res) => {
-      setForms(res.data)
+ 
+ // const postNewUser = (newUser) => {
 
-    })
-    .catch((err) =>{
-      console.log(err);
-    });
-
-  }
-
-  const postNewUser = (newUser) => {
-
-    axios
-    .post('https://reqres.in/api/users', newUser)
-    .then((res) => {
-      setForms([res.data, ...forms])
-      setFormValues(initialFormValues)
-      .catch((err) => {
-        console.log(err);
-      });
-    });
-  }
+  //   axios
+  //   .post('https://reqres.in/api/users', formValues)
+  //   .then((res) => {
+  //     setForms([...forms, res.data.data,])
+  //     setFormValues(initialFormValues)
+  //     console.log('this forms in my .post', formValues)
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  //   });
+  // }
 
   const inputChange = (name, value) => {
 
@@ -80,6 +69,18 @@ function App() {
   }
 
   const formSubmit = () => {
+
+    axios
+    .post('https://reqres.in/api/users', formValues)
+    .then((res) => {
+      // setForms([...forms, res.data,])
+      setFormValues(initialFormValues)
+      console.log('this resData in my .post', res.data)
+    })
+    .catch((err) => {
+        console.log(err);
+      });
+    
     const newUser = {
     fname : formValues.fname.trim(),
     lname: formValues.lname.trim(),
@@ -89,12 +90,16 @@ function App() {
       (terms) => formValues[terms]
     )
     }
-    postNewUser(newUser);
+
+    setForms([...forms,newUser])
+    // setForms([...forms, newUser])
+    // postNewUser(newUser);
+    console.log('this is forms in form submit',forms)
   }
 
-  useEffect(() => {
-    getUsers();
-  }, []);
+  // useEffect(() => {
+  //   getUsers();
+  // }, []);
 
 
 useEffect(() => {
@@ -103,11 +108,7 @@ useEffect(() => {
   })
 }, [formValues]);
 
-
-
-  
-
-  return (
+return (
     <div className="App container">
       <header>
         Application to Brandons School
@@ -122,12 +123,15 @@ useEffect(() => {
       />
       </div>
 
-      {/* {forms.map((person) => {
-        return <Form key={person.id} details={person} />
-      })} */}
+      {forms.map((person) => {
+        return(<Form key={person.id} fname={person.fname} lname={person.lname} email={person.email} password={person.password}  />)
+      })}
     </div>
   );
 }
 
 
 export default App;
+
+
+// details={person}

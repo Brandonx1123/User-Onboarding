@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 function TeamMemberForm (props) {
 
     const {values, change, submit, disabled, errors} = props;
@@ -70,7 +68,7 @@ function TeamMemberForm (props) {
                 name='password'
                 type= 'text'
                 placeholder= 'type password here'
-                maxLength = '35'
+                maxLength = '20'
                 value= {values.password}
                 onChange= {onChange}
                 />
@@ -87,7 +85,7 @@ function TeamMemberForm (props) {
                 </label>
 
                 <div className ='submit'>
-                <button disabled={disabled}>submit</button>
+                <button className ='submitButton'disabled={disabled}>submit</button>
                 </div>
             </div>
         </form>

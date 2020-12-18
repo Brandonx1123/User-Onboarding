@@ -15,6 +15,6 @@ email : yup
 password : yup
 .string().required('Password is Required').min(5, 'Password Must Be At Least 5 Characters Long'),
 
-terms : yup.boolean(),
+terms : yup.boolean().required('Must Accept Terms Of Service '),
 
 }) 
